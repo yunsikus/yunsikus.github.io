@@ -1,8 +1,9 @@
 ---
 layout: tag-blog
-title: Think
-slug: Think
-category: Think
+title: ML
+slug: ML
+category: Data
 menu: false
 order: 1
+
 ---

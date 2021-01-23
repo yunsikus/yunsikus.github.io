@@ -1,7 +1,7 @@
 ---
 layout: list
-title: Think
-slug: think
+title: Diary
+slug: Diary
 menu: true
 submenu: false
 order: 1
