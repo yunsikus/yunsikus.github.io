@@ -20,7 +20,7 @@ tagline:             "Pleasure of Learning."
 description:
 
 # This should be the same author as first entry in `_data/authors.yml`
-author:
+author:              yunsik
   name:              yunsik
   email:             gafield8785@naver.com
 
@@ -47,7 +47,7 @@ google_analytics:    UA-137374202-1
 
 # Setting a disqus shortname will enable the comment section on pages with `comments: true` in the front matter
 disqus: True
-disqus_shortname:    
+disqus_shortname: yunsikus
 
 # This text will appear in the footer of every page. Markdown enabled.
 copyright:
