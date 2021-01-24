@@ -20,7 +20,7 @@ tagline:             "Pleasure of Learning."
 description:
 
 # This should be the same author as first entry in `_data/authors.yml`
-author:              yunsik
+author:              
   name:              yunsik
   email:             gafield8785@naver.com
 
@@ -43,7 +43,7 @@ google_fonts:        Lato
 
 # Set your Google Analytics id to receive `pageview` events.
 # To remove Google Anaylics from your page, remove the line below.
-google_analytics:   
+google_analytics:
 
 # Setting a disqus shortname will enable the comment section on pages with `comments: true` in the front matter
 disqus: True
