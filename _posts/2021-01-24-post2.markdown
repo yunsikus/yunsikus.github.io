@@ -1,7 +1,7 @@
 ---  
 layout: post  
-title: "[Python]14883 연산자 끼워넣기"  
-subtitle: "[Python]14883 연산자 끼워넣기"  
+title: "[Python]14888 연산자 끼워넣기"  
+subtitle: "[Python]14888 연산자 끼워넣기"  
 categories: Algorithm
 tags: DFS 백트래킹 브루트포스
 comments: true  
