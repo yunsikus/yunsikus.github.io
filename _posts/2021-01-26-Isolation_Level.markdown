@@ -2,8 +2,8 @@
 layout: post  
 title: "DB Isolation Level"  
 subtitle: "DB Isolation Level"  
-categories: Data
-tags: Engineering Hadoop HDFS MapReduce Spark
+categories: DB
+tags: Mysql MariaDB InnoDB Transaction Isolation_Level 
 comments: true  
 
 
