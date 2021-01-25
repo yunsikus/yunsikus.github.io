@@ -3,7 +3,7 @@ layout: post
 title: "DB Isolation Level"  
 subtitle: "DB Isolation Level"  
 categories: DB
-tags: Mysql MariaDB InnoDB Transaction Isolation_Level 
+tags: Mysql MariaDB InnoDB Transaction 
 comments: true  
 
 
