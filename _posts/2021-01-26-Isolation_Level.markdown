@@ -3,7 +3,7 @@ layout: post
 title: "DB Isolation Level"  
 subtitle: "DB Isolation Level"  
 categories: DB
-tags: Mysql MariaDB InnoDB Transaction 
+tags: Mysql MariaDB InnoDB Transaction
 comments: true  
 
 
@@ -14,16 +14,17 @@ comments: true
 
 예를 들어, 한 사용자가 어떠한 데이터를 수정하고 있는 경우 다른 사용자들이 그 데이터에 접근하는 것을 차단함으로써 완전한 데이터만을 사용자들에게 제공할 수 있습니다. (`무결성`)
 
-또한 많은 사용자들의 수정 작업으로 인하여 통계 자료를 작성할 수 없는 사용자를 위하여 읽기 작업을 수행할 수 있도록 Isolation Level을 변경할 수 있습니다.(`동시성`)
+반면 많은 사용자들의 수정 작업으로 인하여 통계 자료를 작성할 수 없는 사용자를 위하여 읽기 작업을 수행할 수 있도록 Isolation Level을 변경할 수 있습니다.(`동시성`)
 
-Isoaltion Level을 조정하는 경우 `동시성`이 증가되는데 반해, 데이터의 `무결성`에 문제가 발생할 수 있거나, 데이터의 `무결성`을 완벽하게 유지하는 데 반하여 `동시성`이 떨어질 수 있습니다. → `무결성`과 `동시성`은 `trade off` 관계에 있음
+Isoaltion Level을 완화하는 경우 `동시성`이 증가되는데 반해, 데이터의 `무결성`에 문제가 발생할 수 있거나, 데이터의 `무결성`을 완벽하게 유지하는 데 반하여 `동시성`이 떨어질 수 있습니다. → `무결성`과 `동시성`은 `trade off` 관계에 있음
 
+isolation level 확인 쿼리
 
+```sql
+show variables like 'tx_isolation';
+```
 
-
-## 4 Types of transaction Isolation Level
-
-
+## 4 Types of Transaction Isolation Level
 
 ### Read Uncommited (동시성 GOOD, 무결성 BAD)
 
@@ -33,9 +34,13 @@ Isoaltion Level을 조정하는 경우 `동시성`이 증가되는데 반해, �
     - 만약 원래 `트랜잭션`에서 그 변경 사항을 `롤백`하면 그 데이터를 읽은 `트랜잭션`은 dirty 데이터를 가지고 있다고 말한다.
 
     1. A 트랜잭션에서 10번 사원의 나이를 27살에서 28로 바꿈
-    2. 아직 커밋하지 않음
+    2. 아직 COMMIT하지 않음
     3. B 트랜잭션에서 10번 사원의 나이를 조회함
     4. 28살이 조회됨
+
+     5. A 트랜잭션에서 RollBack됨 (27살이 되고 28살은 없는 데이터가 됨)
+
+
 
 ### Read Committed
 
@@ -45,19 +50,19 @@ Isoaltion Level을 조정하는 경우 `동시성`이 증가되는데 반해, �
 
 1. B 트랜잭션에서 10번 사원의 나이를 조회
 2. 27살이 조회됨
-3. A 트랜잭션에서 10번 사원의 나이를 27살에서 28살로 바꾸고 commit
+3. A 트랜잭션에서 10번 사원의 나이를 27살에서 28살로 바꾸고 COMMIT
 4. 28살이 조회됨
 
 ### Repeatable Read
 
 - 트랜잭션이 시작되기 전에 커밋된 내용에 대해서만 조회할 수 있는 LEVEL
 - 자신의 트랜잭션 번호보다 낮은 트랜잭션 번호에서 변경된(COMMIT) 것만 보게된다.
-    - 모든 InnoDB의 트랜잭션은 고유한 트랜잭션 번호(순차적으로 증가하는)를 가지고 있으며 언두 영역에 백업된 모든 레코드는 변경을 발생시킨 트랜잭션 번호가 포함되어 있다.
+    - 모든 InnoDB의 트랜잭션은 고유한 트랜잭션 번호(순차적으로 증가하는)를 가지고 있으며 언두 영역에 백업된 모든 레코드는 발생시킨 트랜잭션 번호가 포함되어 있다.
 
 1. 10번 트랜잭션이 500000번 사원을 조회
 2. 12번 트랜잭션이 500000번 사원의 이름을 변경하고 커밋
 3. 10번 트랜잭션이 500000번 사원을 다시 조회
-4. 언두 영역에 백업된 데이터 반환(10번 트랜잭션 이전 상태)
+4. 언두 영역에 백업된 데이터 반환(직전 트랜잭션의 결과값)
 
 - `Phantom Read` 문제가 발생
     - 한 트랜잭션 내에서 쿼리를 두 번 실행하였는데, 첫 번째 쿼리에서 없던 유령(Phantom) 레코드가 두 번째 쿼리에서 나타나는 현상.
@@ -73,8 +78,8 @@ SELECT id FROM Balance_under_100; -- 0건 조회
 		COMMIT;
 
 SELECT * FROM Balance_under_100; -- 여전히 0건 조회
-UPDATE Balance_under_100 SET name = 'yunsik' where id = 1'
-SELECT * from Balance_under_100; -- 여전히 1건 조회
+UPDATE Balance_under_100 SET name = 'yunsik' where id = 1';
+SELECT * from Balance_under_100; --  1건 조회
 COMMIT;
 ```
 
@@ -82,7 +87,6 @@ COMMIT;
 
 - 가장 단순하고 가장 엄격한 LEVEL
 - InnoDB에서 기본적으로 순수한 SELECT 작업은 아무런 잠금을 걸지 않고 동작하는데 Serializable일 경우 다른 트랜잭션에서 이 레코드를 변경하지 못하게 한다.
-
 ## DB type별 기본 Isolation Level
 
 |이름|Isolation Level|특징|
@@ -93,9 +97,9 @@ COMMIT;
 
 
 참고
-
-[https://effectivesquid.tistory.com/entry/데이터베이스-Isolation-Level](https://effectivesquid.tistory.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-Isolation-Level)
-
-[https://jupiny.com/2018/11/30/mysql-transaction-isolation-levels/](https://jupiny.com/2018/11/30/mysql-transaction-isolation-levels/)
-
-[https://joont92.github.io/db/트랜잭션-격리-수준-isolation-level/](https://joont92.github.io/db/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98-%EA%B2%A9%EB%A6%AC-%EC%88%98%EC%A4%80-isolation-level/)
+- [https://effectivesquid.tistory.com/entry/데이터베이스-Isolation-Level](https://effectivesquid.tistory.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-Isolation-Level)
+- [https://jupiny.com/2018/11/30/mysql-transaction-isolation-levels/](https://jupiny.com/2018/11/30/mysql-transaction-isolation-levels/)
+- [https://joont92.github.io/db/트랜잭션-격리-수준-isolation-level/](https://joont92.github.io/db/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98-%EA%B2%A9%EB%A6%AC-%EC%88%98%EC%A4%80-isolation-level/)
+- mariadb 사이트 isolation level 설명 : [https://mariadb.com/kb/en/mariadb-transactions-and-isolation-levels-for-sql-server-users/](https://mariadb.com/kb/en/mariadb-transactions-and-isolation-levels-for-sql-server-users/)
+- [https://jsonobject.tistory.com/427](https://jsonobject.tistory.com/427)
+- [https://suhwan.dev/2019/06/09/transaction-isolation-level-and-lock/](https://suhwan.dev/2019/06/09/transaction-isolation-level-and-lock/)
