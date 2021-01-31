@@ -1,7 +1,7 @@
 ---  
 layout: post  
-title: "[Python] 14503.로봇청소기"  
-subtitle: "[Python] 14503.로봇청소기"  
+title: "[Python]14503 로봇청소기"  
+subtitle: "[Python]14503 로봇청소기"  
 categories: Algorithm
 tags: Algorithm Dfs 시뮬레이션
 comments: true  
