@@ -37,7 +37,7 @@ comments: true
     - visited변수를 통해 방문하지 않은 좌표, 혹은 아예 토마토가 없는 좌표를 재외하고 `queue`에 `push`한다.
     - (`다음 좌표 X`, `다음 좌표 Y`, `날짜 +1`)의 형태를 `push`
 
-3. 만약 모든 좌표를 방문하지 않았다면, `-1`을 반환. 아니면 최종 날짜인 `count`를 반환. 
+3. 만약 모든 좌표를 방문하지 않았다면, `-1`을 반환. 아니면 최종 날짜인 `count`를 반환.
 
 ```python
 from collections import deque
