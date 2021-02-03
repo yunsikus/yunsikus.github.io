@@ -8,6 +8,8 @@ comments: true
 
 
 ---  
+## [Programmers : 메뉴리뉴얼](https://programmers.co.kr/learn/courses/30/lessons/72411)
+
 ## 문제 설명
 레스토랑을 운영하던 스카피는 코로나19로 인한 불경기를 극복하고자 메뉴를 새로 구성하려고 고민하고 있습니다.
 
