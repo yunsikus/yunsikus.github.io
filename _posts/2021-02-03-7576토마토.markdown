@@ -1,7 +1,7 @@
 ---  
 layout: post  
-title: "[Python]7576 토마토"  
-subtitle: "[Python]7576 토마토"  
+title: "[Python] 7576 토마토"  
+subtitle: "[Python] 7576 토마토"  
 categories: Algorithm
 tags: BFS
 comments: true  
