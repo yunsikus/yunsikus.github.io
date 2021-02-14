@@ -133,15 +133,6 @@ plt.figure(figsize=(20,12))
 sns.countplot(all_data['weekday'], hue = all_data['interest_level'])
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f6882fc2950>
-
-
-
-
-
 ![png1](https://yunsikus.github.io/assets/img/post_img/two-sigma-text_11_1.jpg)
 
 
@@ -154,15 +145,6 @@ plt.figure(figsize=(20,12))
 
 sns.countplot(all_data['day'], hue = all_data['interest_level'])
 ```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f6867b196d0>
-
-
-
-
 
 ![png2](https://yunsikus.github.io/assets/img/post_img/two-sigma-text_12_1.jpg)
 
