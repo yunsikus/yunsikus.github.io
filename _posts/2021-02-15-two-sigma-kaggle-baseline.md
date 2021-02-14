@@ -2,8 +2,8 @@
 layout: post  
 title: "[Kaggle]Two Sigma Connect:Rental Listing Inquiries Baseline 잡기"  
 subtitle: "[Kaggle]Two Sigma Connect:Rental Listing Inquiries Baseline 잡기"  
-categories: ML
-tags: ML, Kaggle, Classification
+categories: Data
+tags: ML Kaggle Classification
 comments: true  
 
 
