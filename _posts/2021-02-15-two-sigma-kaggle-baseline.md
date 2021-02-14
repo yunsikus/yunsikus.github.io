@@ -133,7 +133,7 @@ plt.figure(figsize=(20,12))
 sns.countplot(all_data['weekday'], hue = all_data['interest_level'])
 ```
 
-![png1](https://yunsikus.github.io/assets/img/post_img/two-sigma-text_11_1.jpg)
+![png1](https://yunsikus.github.io/assets/img/post_img/two-sigma-text_1.jpg)
 
 
 
@@ -146,7 +146,7 @@ plt.figure(figsize=(20,12))
 sns.countplot(all_data['day'], hue = all_data['interest_level'])
 ```
 
-![png2](https://yunsikus.github.io/assets/img/post_img/two-sigma-text_12_1.jpg)
+![png2](https://yunsikus.github.io/assets/img/post_img/two-sigma-text_2.jpg)
 
 
 
