@@ -8,11 +8,11 @@ comments: true
 
 
 ---  
+## [Two Sigma Connect:Rental Listing Inquiries](https://www.kaggle.com/c/two-sigma-connect-rental-listing-inquiries/overview)
 
 ## 문제 설명
 - New York 시의 부동산 선호도 예측 문제.
-- 간단한 파생변수, 통계량, 날짜변수 추가.
-- Text data를 tf-idf, count-vectorizer, SVD로 유효한 피쳐로 변환
+
 
 ## Data fields
 - bathrooms: number of bathrooms
@@ -32,6 +32,10 @@ comments: true
 - interest_level: this is the `target variable`. It has 3 categories: '`high`', '`medium`', '`low`'
 
 # Make Quick Baseline
+
+- 간단한 파생변수, 통계량, 날짜변수 추가.
+- Text data를 tf-idf, count-vectorizer, SVD로 유효한 피쳐로 변환
+- catbosot로 baseline모델 구축
 
 ## 1. 데이터 가져오기
 - 캐글내의 노트북을 이용할 경우 다음 경로에 train, test, submission data가 저장되어있다.
@@ -138,7 +142,7 @@ sns.countplot(all_data['weekday'], hue = all_data['interest_level'])
 
 
 
-![png](two-sigma-text_files/two-sigma-text_11_1.png)
+![png](https://yunsikus.github.io/_posts/two-sigma-text_files/two-sigma-text_11_1.png)
 
 
 
@@ -160,7 +164,7 @@ sns.countplot(all_data['day'], hue = all_data['interest_level'])
 
 
 
-![png](two-sigma-text_files/two-sigma-text_12_1.png)
+![png](https://yunsikus.github.io/_posts/two-sigma-text_files/two-sigma-text_12_1.png)
 
 
 
