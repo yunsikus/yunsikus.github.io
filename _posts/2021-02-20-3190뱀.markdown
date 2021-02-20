@@ -132,7 +132,7 @@ def start():
         # 사과를 먹지 않는 경우는 queue에서 제일 처음에 들어왔던 좌표를 삭제한다.
         # 사과를 먹은 경우는 아무 작업도 하지 않는다.
         if board[x][y] != 1:
-            coord.popleft() # pop()
+            coord.popleft() 
 
         # 사과를 먹은 경우 1을 0으로 리샛시켜준다.
         board[x][y] = 0
