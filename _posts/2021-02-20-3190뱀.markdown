@@ -47,15 +47,19 @@ dx = [0,-1,0,1] # right, up, left, down
 dy = [1,0,-1,0]
 ```
 `up`에서 `D` -> `right`
+
 `up`에서 `L` -> `left`  
 
 `down`에서 `D` -> `left`  
+
 `down`에서 `L` -> `right`
 
 `right` 에서 `D` -> `down`
+
 `right` 에서 `L` -> `up`  
 
 `left` 에서 `D` -> `up`
+
 `left` 에서 `L` -> `down`
 
 `D`의 경우 현재 `direction`에서 오른쪽 한칸
@@ -72,7 +76,7 @@ ny = x + dx[(direction+3)%4]
 ```
 
 2번의 경우 `collections` 모듈에서 `deque`를 통해 큐 자료구조를 썼습니다. list를 써도 통과할 수 있으나, `queue.leftpop()`의 경우 시간복잡도가 `O(1)`로 리스트에서 원소 삭제에 걸리는 `O(N)`보다 훨씬 빠릅니다.
-새로운 좌표에 사과가 없으면 에서 첫번째 요소를 `pop`하고, 사과가 있으면 넘어갑니다.
+새로운 좌표에 사과가 없으면 큐의 세번째 요소를 `pop`하고, 사과가 있으면 넘어갑니다.
 
 풀이는 아래와 같습니다.
 ```python
@@ -132,7 +136,7 @@ def start():
         # 사과를 먹지 않는 경우는 queue에서 제일 처음에 들어왔던 좌표를 삭제한다.
         # 사과를 먹은 경우는 아무 작업도 하지 않는다.
         if board[x][y] != 1:
-            coord.popleft() 
+            coord.popleft()
 
         # 사과를 먹은 경우 1을 0으로 리샛시켜준다.
         board[x][y] = 0
