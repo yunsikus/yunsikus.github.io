@@ -102,7 +102,7 @@ Muzi가 나간후 다시 들어올 때, Prodo 라는 닉네임으로 들어올 �
 
 원소를 넣을 때, 삭제할 때, 찾는 일이 많을때는 리스트보다는 딕셔너리가 효율적입니다.
 
-또한, 이 문제에서 처럼 value값을 update하거나 새로운 key를 추가시킬때, 복잡하게 리스트와 if를 쓰기보다는 딕셔너리를 사용하면 간편합니다. 
+또한, 이 문제에서 처럼 value값을 update하거나 새로운 key를 추가시킬때, 복잡하게 리스트와 if를 쓰기보다는 딕셔너리를 사용하면 간편합니다.
 
 ### get 활용하기
 
@@ -135,7 +135,9 @@ my_dict.items() # dict_items([('최연식', 300), ('John', 180)])
 ## 풀이
 
 1. `record`를 for문으로 돌면서, `userid`와 `name`을 `dictionary`에 저장합니다.
+
 ex) {"uid1234": Muzi, "uid4567":"Ryan", ...}
+
 `userid`가 없는 경우에는 `userid`가 새로운 `key`로 추가되며, 이미 있는 경우에는 `value`가 새로운 값으로 `update`됩니다.
 
 2. 다시 한번, `record`를 for문으로 돌면서, `Enter`가 입력되면, `dictionary`에서 해당 `id`에 해당되는 `value`를 가져와서 '~님이 들어왔습니다'에 넣어줍니다. `Leave`는 '~님이 나갔습니다'에 `value`를 넣어줍니다. 그리고 해당 문구를 최종 `return`값인 `result` `리스트에` 하나씩 `append`시켜줍니다.
