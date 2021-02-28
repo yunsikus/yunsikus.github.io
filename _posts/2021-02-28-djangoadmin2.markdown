@@ -31,6 +31,8 @@ admin.site.register(Choice)
 ```
 ![django_admin1](https://yunsikus.github.io/assets/img/post_img/django-admin_1.jpg)
 
+---
+
 ## 2. 각 필드를 분리해서 보여주기
 `fieldsets`으로 각 필드를 분리할 수 있습니다. `fieldsets`에 있는 각 튜플의 첫번째 인자가 해당 필드의 제목입니다.
 
@@ -45,6 +47,8 @@ class QuestionAdmin(admin.ModelAdmin):
 ```
 ![django_admin2](https://yunsikus.github.io/assets/img/post_img/django-admin_2.jpg)
 
+---
+
 ## 3. 필드 접기
 필드 항목을 접을 수도 있습니다. 앞에서 살펴본 필드 순서 변경. 필드 분리 및 지금 진행하려고 하는 필드 접기 기능 등은 모두 필드 개수가 많아 폼이 길어진 경우에 유용하게 사용할 수 있습니다.
 
@@ -58,6 +62,8 @@ class QuestionAdmin(admin.ModelAdmin):
 # 아래 내용 동일
 ```
 ![django_admin3](https://yunsikus.github.io/assets/img/post_img/django-admin_3.jpg)
+
+---
 
 ## 4.외래키 관계 화면
 
@@ -81,6 +87,7 @@ class QuestionAdmin(admin.ModelAdmin):
 ```
 ![django_admin4](https://yunsikus.github.io/assets/img/post_img/django-admin_4.jpg)
 
+---
 
 ## 5. 레코드 리스트 컬럼 지정하기.
 
@@ -98,6 +105,8 @@ class QuestionAdmin(admin.ModelAdmin):
 ```
 ![django_admin5](https://yunsikus.github.io/assets/img/post_img/django-admin_5.jpg)
 
+---
+
 ## 6. 필터 사이드바 붙이기
 
 `list_filter` 속성을 한 줄 추가하면, UI 화면 우측에 필터 사이드 바를 붙일 수도 있습니다.
@@ -113,6 +122,8 @@ class QuestionAdmin(admin.ModelAdmin):
 # 아래 내용 동일
 ```
 ![django_admin6](https://yunsikus.github.io/assets/img/post_img/django-admin_6.jpg)
+
+---
 
 ## 7. 검색 박스 표시하기
 `search_fileds` 속성을 한 줄 추가하면 UI화면에 검색 박스를 표시할 수 있습니다.
