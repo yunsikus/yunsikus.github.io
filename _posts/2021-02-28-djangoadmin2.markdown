@@ -29,6 +29,8 @@ class QuestionAdmin(admin.ModelAdmin):
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
 ```
+< **fields 로 변수 순서 변경** >
+
 ![django_admin1](https://yunsikus.github.io/assets/img/post_img/django-admin_1.jpg)
 
 ---
@@ -45,6 +47,8 @@ class QuestionAdmin(admin.ModelAdmin):
     ]
 # 아래 내용 동일
 ```
+< **fieldset으로 필드 분리** >
+
 ![django_admin2](https://yunsikus.github.io/assets/img/post_img/django-admin_2.jpg)
 
 ---
@@ -61,6 +65,8 @@ class QuestionAdmin(admin.ModelAdmin):
     ]
 # 아래 내용 동일
 ```
+< **필드 접기** >
+
 ![django_admin3](https://yunsikus.github.io/assets/img/post_img/django-admin_3.jpg)
 
 ---
@@ -85,6 +91,9 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
 # 아래 내용 동일
 ```
+
+< **외래 키 관련 다중 필드 추가** >
+
 ![django_admin4](https://yunsikus.github.io/assets/img/post_img/django-admin_4.jpg)
 
 ---
@@ -103,6 +112,9 @@ class QuestionAdmin(admin.ModelAdmin):
     list_display = ('question_text', 'pub_date') # 레코드 리스트 컬럼 항목 지정
 # 아래 내용 동일
 ```
+
+< **list_display로 레코드 리스트 컬럼 지정** >
+
 ![django_admin5](https://yunsikus.github.io/assets/img/post_img/django-admin_5.jpg)
 
 ---
@@ -121,6 +133,9 @@ class QuestionAdmin(admin.ModelAdmin):
     list_filter = ['pub_date'] # 필터 사이드 바 추가
 # 아래 내용 동일
 ```
+
+< **list_filter로 필터 사이드바 붙이기** >
+
 ![django_admin6](https://yunsikus.github.io/assets/img/post_img/django-admin_6.jpg)
 
 ---
@@ -139,4 +154,7 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question_text'] # 검색 박스 추가
 # 아래 내용 동일
 ```
+
+< **search_fields로 검색 박스 표시하기** >
+
 ![django_admin7](https://yunsikus.github.io/assets/img/post_img/django-admin_7.jpg)
