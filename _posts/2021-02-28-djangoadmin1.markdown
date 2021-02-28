@@ -81,17 +81,17 @@ class Choice(models.Model):
 
 - **verbose_name_plural** :  verbose_name의 복수형이다. 옵션을 지정하지 않을 시 verbose_name에 s를 붙인다. 위의 경우 `Choices` 와 `Questions`로 표시됩니다.
 
-
+< **verbose_name 작성 전** >
 
 ![django_model2](https://yunsikus.github.io/assets/img/post_img/django-model_2.jpg)
 
+< **verbose_name 작성 후** >
 
 ![django_model3](https://yunsikus.github.io/assets/img/post_img/django-model_3.jpg)
 
 
 ## Question 테이블 컬럼과 클래스 변수간의 매핑
 
-테이블 컬럼과 클래스 변수 간의 매핑 관계는 다음과 같습니다.
 
 |테이블 컬럼명|컬럼타입|장고의 클래스 변수|장고의 필드 클래스|
 |-|-|-|-|
@@ -118,7 +118,11 @@ class Choice(models.Model):
 
 해당 메소드를 설정하면 다음과 같이 데이터 값들이 `object`에서 위에서 설정한 `choice_text`로 보입니다.
 
+< **str 메소드 작성 전** >
+
 ![django_model4](https://yunsikus.github.io/assets/img/post_img/django-model_4.jpg)
+
+< **str 메소드 작성 후** >
 
 ![django_model5](https://yunsikus.github.io/assets/img/post_img/django-model_5.jpg)
 
