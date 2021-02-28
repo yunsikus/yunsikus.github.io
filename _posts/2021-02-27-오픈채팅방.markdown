@@ -144,7 +144,7 @@ ex) {"uid1234": Muzi, "uid4567":"Ryan", ...}
 
 ```python
 def solution(record):
-    id_to_name_dict = {} # {"uid1234": Muzi, "uid4567":"Ryan", ...}
+    id_to_name_dict = {} # {"uid1234": "Muzi", "uid4567":"Ryan", ...}
     answer = []
 
     for line in record:
