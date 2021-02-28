@@ -3,7 +3,7 @@ layout: post
 title: "[Django] model - 테이블 정의"
 subtitle: "[Django] model - 테이블 정의"
 categories: Development Django
-tags: Django Python Model
+tags: Django Model
 comments: true
 ---
 
