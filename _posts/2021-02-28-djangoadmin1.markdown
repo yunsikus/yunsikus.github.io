@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "[Django]model - 테이블 정의"
-subtitle: "[Django]model - 테이블 정의"
+title: "[Django] model - 테이블 정의"
+subtitle: "[Django] model - 테이블 정의"
 categories: Development Django
 tags: Django Python Model
 comments: true
@@ -11,7 +11,7 @@ comments: true
 
 장고에서는 테이블을 하나의 클래스로 정의하고, 테이블의 컬럼은 클래스의 변수로 매핑합니다. 태이블 클래스는 `django.db.models.Model` 클래스를 상속받아 정의하고, 각 클래스 변수의 타입도 장고에서 미리 정의된 필드 클래스를 사용합니다.
 
-설문조사를 가정하고 `질문(Question)`과 그 `대답(Choice)`를 DB에 저장한다고 합시다.
+설문조사를 가정하고 `질문(Question)`과 그 `대답(Choice)`를 DB에 저장한다고 하면 models.py는 다음과 같습니다.
 
 
 ```python
