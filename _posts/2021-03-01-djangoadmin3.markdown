@@ -83,7 +83,7 @@ Question.objects.filter(pub_date__gte=datetime.date.today()).update(question_tex
 
 ## 4. Delete - 데이터삭제
 
-객체를 삭제하기 위해서는 `delete()` 메소드를 사용합니다. 아래 문장은 `pub_date` 필드의 연도가 2005년인 모든 객체를 삭제하는 명령입니다. `delete()` 메소드는 SQL용어로 `DELETE`절에 해당합니다.
+객체를 삭제하기 위해서는 `delete()` 메소드를 사용합니다. 아래 문장은 `pub_date` 필드의 날짜가 오늘인 모든 객체를 삭제하는 명령입니다. `delete()` 메소드는 SQL용어로 `DELETE`절에 해당합니다.
 
 ```python
 Question.objects.filter(pub_date__gte=datetime.date.today()).delete()
