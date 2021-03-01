@@ -7,7 +7,7 @@ tags: Django Model
 comments: true
 ---
 
-## Admin 사이트 꾸미기
+## Admin 데이터 조작하기
 
 Admin 사이트가, UI로 보면서 데이터를 관리할 수 있어 편리하다면, 쉘 데이터 처리는 복잡한 조건 검색처럼, Admin 사이트보다는 더 다양한 데이터 관리 명령이 가능합니다.
 
