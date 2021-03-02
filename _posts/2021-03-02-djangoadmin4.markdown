@@ -11,7 +11,7 @@ comments: true
 
 학습하고 있는 강의와 책에서는 모두 테이블을 새롭게 생성합니다. 하지만 실제 장고를 적용하는 환경에서는 기존에 가지고 있는 테이블을 활용하는 경우가 많을 것입니다. 이번 장에서는 기존 테이블을 연동하는 방법을 알아보겠습니다.
 
-## 1. inspectdb로 생성되어 있는 테이블의 구조를 확인한다.
+## 1. inspectdb로 생성되어 있는 테이블의 구조를 확인합니다.
 
 ```python
 python3 manage.py inspectdb
@@ -49,7 +49,7 @@ class XprdMasterTagsetMeasure(models.Model):
         db_table = 'xprd_master_tagset_measure'
 ```
 
-## 3. Makemigrations Migrate
+## 3. Makemigrations Migrate 합니다.
 
 이후에는 똑같이 `makemigrations`, `migrate`  해줍니다.
 
@@ -58,7 +58,7 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
-다만,해당 테이블이 이미 db에 존재하기 때문에 다음과 같은 에러 메시지를 마주칩니다.
+다만, 해당 테이블이 이미 db에 존재하기 때문에 다음과 같은 에러 메시지를 마주칩니다.
 
 ```
 "Table 'xprd_master_tagset_measure' already exists"
