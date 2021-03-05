@@ -1,0 +1,103 @@
+---  
+layout: post  
+title: "[Effective Python] 15장. 클로저가 변수 스코프와 상호 작용하는 방법을 알자
+subtitle: "[Effective Python] 15장"  
+categories: Development Python Closure
+tags: Python Effective 고급파이썬
+comments: true  
+---  
+
+## 14. 클로저가 변수 스코프와 상호 작용하는 방법을 알자
+
+다른 scope(유효 범위)에 있는 변수를 사용할 떄 문제를 알아봅시다.
+
+#### Case 1. 더 넓은 범우에 있는 변수 읽기는 가능
+
+- 아래와 같이 전역변수로 n을 선언하고 이를 함수 내에서 읽기만 하는 경우 에러가 나지 않는다.
+
+```python
+n = 0
+def func():
+  print(n) # 0
+func()
+```
+
+- 아래와 같은 경우도 마찬가지이다. 전역 변수는 아니고 func2를 감싸고 있는 func1에서 설정한 변수지만 func2 내부에서 사용이 가능합니다.
+
+```python
+def func1():
+  n = 1
+  def func():
+    print(n) # 1
+  func2()
+func1()
+```
+#### Case 2. 더 넓은 범위에 있는 변수 '변경'은 불가능
+```python
+n = 0
+def func():
+  n += 1 # error
+  print(n)
+func()
+```
+```python
+def func1():
+  n = 1
+  def func2():
+    n += 1 # error
+    print(n)
+  func2()
+func1()
+```
+- 위 두 코드 모두 실행해보면 `UnboundLocalError: local variable 'n' referenced before assignment` 에러가 발생합니다.
+- 더 넓은 범위에 있는 변수라도, 현재 scope밖에서 선언한 변수라면 편집할 수 없습니다.  
+
+#### global
+```python
+n = 1 # 전역 변수인경우
+def func1():
+    def func2():
+        global n
+        n += 1
+        print(n)
+    func2()
+func1()
+```
+
+- n을 전역변수로 선언해주고 함수 내부에서 편집을 원할 때, '나는 지금 함수 내의 n이 아닌 전역변수 n을 쓸꺼야'라는 의미로 `global n`이라고 선언해주면 문제없이 사용이 가능합니다.  
+
+```python
+# 전역변수가 아닌경우
+def func1():
+    n = 1
+    def func2():
+        global n
+        n += 1
+        print(n) # errir
+    func2()
+func1()
+```
+- 만약 위와 같이 전역 변수 n이 아닌 변수에 global 키워드로 지정해준다면 `NameError: name 'n' is not defined` 에러가 발생합니다.
+- 이는 전역변수로 선언된 n이 없기 때문입니다.
+- 이런 경우는 `global`이 아닌 `nonlocal` 키워드를 사용해야 합니다.
+
+#### nonlocal
+```python
+def func1():
+    n = 1
+    def func2():
+        nonlocal n
+        n += 1
+        print(n) # 2
+    func2()
+func1()
+```
+- 위와 같이 현재의 scope내의 지역변수가 아니고, 전역변수도 아닌 변수 n을 사용할 때는 nonlocal 키워드를 써줍니다.
+- '나는 지금 지역변수는 아닌 변수를 사용할거야'라는 의미로 `nonlocal n`이라고 설정해주면 문제없이 사용 가능합니다.
+
+## 핵심정리
+- 클로저 함수는 자신이 정의된 스코프 중 어디에 있는 변수도 참조할 수 있습니다.
+
+- 기본적으로 클로저에소 변수를 할당하면 바깥쪽 스코프에는 영향을 미치지 않습니다.
+
+- 파이썬 3에서는 `nonlocal`문을 사용하여 클로저를 감싸고 있는 스코프의 변수를 수정할 수 있습니다.
