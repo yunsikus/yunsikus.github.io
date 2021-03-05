@@ -41,7 +41,7 @@ for i in range(a):
 
 ## 2. Pythonic 문제풀이
 
-1. **Sort 함수** - key, reverse를 활용
+1) **Sort 함수** - key, reverse를 활용
 
 ```python
 def solution(numbers):
@@ -53,7 +53,7 @@ def solution(numbers):
         answer =  ''.join(numbers)
     return answer
 ```
-2. **Count 함수** - collections의 Count함수를 활용하여 리스트내 원소들의 개수를 편하게 추출
+2) **Count 함수** - collections의 Count함수를 활용하여 리스트내 원소들의 개수를 편하게 추출
 
 ```python
 from collections import Counter
@@ -63,7 +63,7 @@ Counter(my_list)[4] # 원소 4의 개수 3이 출력됨
 ```
 
 
-3. **List comprehension** 으로 복잡한 for 을 간략화, 딕셔너리 생성 가능. zip으로 두개 이상의 리스트를 각 원소별로 작업 가능
+3) **List comprehension** 으로 복잡한 for 을 간략화, 딕셔너리 생성 가능. zip으로 두개 이상의 리스트를 각 원소별로 작업 가능
 
 ```python
 specs = [['yunsik','100'],['choi','200']]
@@ -76,7 +76,7 @@ print([x + y for x, y in zip(list1, list2)]) # [5, 7, 9]
 ```
 
 
-4. **Nested List** 에서 작업하기
+4) **Nested List** 에서 작업하기
 
 ```python
 # unlist in python
@@ -88,7 +88,7 @@ nested_int = [[1,2,3],[4,5,6]]
 total_sum = sum(map(sum,nested_int))
 ```
 
-5. **String 출력** - format을 쓰는게 깔끔
+5) **String 출력** - format을 쓰는게 깔끔
 
 ```python
   for i in range(len(matrix)-1):
@@ -115,3 +115,4 @@ def rotate_a_matrix_by_90_degree(a):
       result[j][n-i-1] = a[i][j]
 
   return result
+```
