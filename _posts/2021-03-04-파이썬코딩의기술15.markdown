@@ -1,12 +1,11 @@
 ---  
-layout: post  
-title: "[Effective Python] 15장. 클로저가 변수 스코프와 상호 작용하는 방법을 알자
+layout: post
+title: "[Effective Python] 15장. 클로저가 변수 스코프와 상호 작용하는 방법을 알자"
 subtitle: "[Effective Python] 15장"  
-categories: Development Python Closure
-tags: Python Effective 고급파이썬
+categories: Development Python
+tags: Python Effective 고급파이썬 Closure
 comments: true  
 ---  
-
 ## 14. 클로저가 변수 스코프와 상호 작용하는 방법을 알자
 
 다른 scope(유효 범위)에 있는 변수를 사용할 떄 문제를 알아봅시다.
