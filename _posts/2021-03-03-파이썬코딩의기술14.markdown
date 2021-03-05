@@ -1,6 +1,6 @@
 ---  
 layout: post  
-title: "[Effective Python] 14장. None을 반환하기보다는 예외를 일으키자"  
+title: "[Effective Python] 14장.None을 반환하기보다는 예외를 일으키자"  
 subtitle: "[Effective Python] 14장"  
 categories: Development Python
 tags: Python Effective 고급파이썬
@@ -50,6 +50,6 @@ else:
 ```
 
 ## 핵심정리
-- 특별한 의미를 나타내려고 `None`을 반환하는 함수가 오류를 일으키기 쉬운 이유는 `None`이나 다른 값(예를 들면 0이나 빈 문자열)이 조건식에서 `False`로 평가되기 때문입니다. 
+- 특별한 의미를 나타내려고 `None`을 반환하는 함수가 오류를 일으키기 쉬운 이유는 `None`이나 다른 값(예를 들면 0이나 빈 문자열)이 조건식에서 `False`로 평가되기 때문입니다.
 
 - 특별한 상황을 알릴 때 `None`을 반환하는 대신에 예외를 일으키는것이 좋습니다. 문서화가 되어 있다면 호출하는 코드에서 예외를 적절하게 처리할 것이라고 기대할 수 있습니다.  
