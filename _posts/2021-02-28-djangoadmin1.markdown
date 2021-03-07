@@ -48,6 +48,9 @@ class Choice(models.Model):
         verbose_name = "선택"
 ```
 
+---
+&nbsp;
+
 ## Foreign Key
 `외래키(ForeignKey)`란 테이블의 필드 중에서 다른 테이블의 행과 식별할 수 있는 키를 의미합니다.
 
@@ -70,6 +73,10 @@ class Choice(models.Model):
 |**models.SET_NULL**|외래키 값을 NULL값으로 변경(null=True일때 사용 가능)|
 |**Models.DO_NOTHING**|아무 행동을 하지 않음|
 
+---
+
+&nbsp;
+
 ## Meta 내부 클래스 옵션
 
 - **db_table** : DB에 저장되는 테이블의 이름을 설정할 수 있습니다.
@@ -86,6 +93,9 @@ class Choice(models.Model):
 
 ![django_model3](https://yunsikus.github.io/assets/img/post_img/django-model_3.jpg)
 
+---
+&nbsp;
+
 
 ## Question 테이블 컬럼과 클래스 변수간의 매핑
 
@@ -95,7 +105,6 @@ class Choice(models.Model):
 |id|integer|(id)|(PK는 장고에서 자동 생성해줌)
 |question_text|varchar(200)|question_text|models.CharField(max_length=200)
 |pub_date|datetime|pub_date|models.Date.TimeField("date published")
-
 
 ## Choice 테이블 컬럼과 클래스 변수간의 매핑
 
@@ -115,14 +124,20 @@ class Choice(models.Model):
 
 `__str__()` 메소드를 설정하면 다음과 같이 데이터 값들이 `object`에서 위에서 설정한 `choice_text`로 보입니다.
 
+&nbsp;
+
 < **str 메소드 작성 전** >
 
 ![django_model4](https://yunsikus.github.io/assets/img/post_img/django-model_4.jpg)
+
+&nbsp;
 
 < **str 메소드 작성 후** >
 
 ![django_model5](https://yunsikus.github.io/assets/img/post_img/django-model_5.jpg)
 
+---
+&nbsp;
 
 ## 데이터베이스 변경사항 반영
 
