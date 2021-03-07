@@ -6,7 +6,6 @@ categories: Development Django
 tags: Django Model
 comments: true
 ---
-
 ## 테이블 정의
 
 장고에서는 테이블을 하나의 클래스로 정의하고, 테이블의 컬럼은 클래스의 변수로 매핑합니다. 태이블 클래스는 `django.db.models.Model` 클래스를 상속받아 정의하고, 각 클래스 변수의 타입도 장고에서 미리 정의된 필드 클래스를 사용합니다.
@@ -74,7 +73,6 @@ class Choice(models.Model):
 |**Models.DO_NOTHING**|아무 행동을 하지 않음|
 
 ---
-
 &nbsp;
 
 ## Meta 내부 클래스 옵션
