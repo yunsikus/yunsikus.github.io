@@ -8,7 +8,7 @@ comments: true
 
 ---  
 
-DB내 테이블을 삭제하는 방법에는 크게 Truncate와 Delete가 있음.
+업무중에 join update를 하기 위한 테이블을 임시 생성 후 삭제해야 했습니다. 테이블을 삭제하는 방법에는 크게 `Truncate`, `Delete`이 있고 각각의 특징을 정리해보았습니다. (Drop은 따로 정리)
 
 ## Truncate VS Delete
 
