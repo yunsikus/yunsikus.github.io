@@ -31,12 +31,12 @@ join update를 하기 위한 테이블을 임시 생성 후 삭제하는 작업�
 
 Join을 위한 임시테이블의 경우, 테이블 정보를 남길 필요가 없기 때문에 `DELETE` 나 `TRUNCATE` 보다는 `DROP`으로 제거가 필요.
 
-Reference
+---
+
+## Reference
 
 Delete와 Truncate의 차이점([https://pointnet.tistory.com/334](https://pointnet.tistory.com/334))
 
-
 SQL 데이터 삭제 TRUNCATE, DROP, TABLE([https://pathas.tistory.com/93](https://pathas.tistory.com/93))
-
 
 Difference between TRUNCATE, DELETE and DROP commands([https://jhnyang.tistory.com/56](https://jhnyang.tistory.com/56))
