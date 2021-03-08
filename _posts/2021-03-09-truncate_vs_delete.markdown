@@ -35,6 +35,8 @@ Reference
 
 Delete와 Truncate의 차이점([https://pointnet.tistory.com/334](https://pointnet.tistory.com/334))
 
-SQL 데이터 삭제 | TRUNCATE, DROP, TABLE([https://pathas.tistory.com/93](https://pathas.tistory.com/93))
+
+SQL 데이터 삭제 TRUNCATE, DROP, TABLE([https://pathas.tistory.com/93](https://pathas.tistory.com/93))
+
 
 Difference between TRUNCATE, DELETE and DROP commands([https://jhnyang.tistory.com/56](https://jhnyang.tistory.com/56))
