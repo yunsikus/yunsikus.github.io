@@ -1,66 +1,97 @@
 ---
 layout: post
-title: "[Python] 문자열압축"
-subtitle: "[Python] 문자열압축"
-categories: Algorithm
+title: "[DB] Disk Drive"
+subtitle: "[DB] Disk Drive"
+categories: DB DBMS Disk HDD SSD
 tags: Python Simulation
 comments: true
 
 
 ---
-## [Programmers : 문자열 압축](https://programmers.co.kr/learn/courses/30/lessons/60057)
 
-## 문제 설명
+DBMS는 `디스크기반`에서 `인메모리 기반`으로 발전함.
+DBMS의 기능을 알기 위해서는 disk drive를 알아둬야 함.
 
-데이터 처리 전문가가 되고 싶은 "어피치"는 문자열을 압축하는 방법에 대해 공부를 하고 있습니다. 최근에 대량의 데이터 처리를 위한 간단한 비손실 압축 방법에 대해 공부를 하고 있는데, 문자열에서 같은 값이 연속해서 나타나는 것을 그 문자의 개수와 반복되는 값으로 표현하여 더 짧은 문자열로 줄여서 표현하는 알고리즘을 공부하고 있습니다.
-간단한 예로 "aabbaccc"의 경우 "2a2ba3c"(문자가 반복되지 않아 한번만 나타난 경우 1은 생략함)와 같이 표현할 수 있는데, 이러한 방식은 반복되는 문자가 적은 경우 압축률이 낮다는 단점이 있습니다. 예를 들면, "abcabcdede"와 같은 문자열은 전혀 압축되지 않습니다. "어피치"는 이러한 단점을 해결하기 위해 문자열을 1개 이상의 단위로 잘라서 압축하여 더 짧은 문자열로 표현할 수 있는지 방법을 찾아보려고 합니다.
+## 디스크란?
 
-예를 들어, "ababcdcdababcdcd"의 경우 문자를 1개 단위로 자르면 전혀 압축되지 않지만, 2개 단위로 잘라서 압축한다면 "2ab2cd2ab2cd"로 표현할 수 있습니다. 다른 방법으로 8개 단위로 잘라서 압축한다면 "2ababcdcd"로 표현할 수 있으며, 이때가 가장 짧게 압축하여 표현할 수 있는 방법입니다.
+Secondary Storage 역할을 함.
 
-다른 예로, "abcabcdede"와 같은 경우, 문자를 2개 단위로 잘라서 압축하면 "abcabc2de"가 되지만, 3개 단위로 자른다면 "2abcdede"가 되어 3개 단위가 가장 짧은 압축 방법이 됩니다. 이때 3개 단위로 자르고 마지막에 남는 문자열은 그대로 붙여주면 됩니다.
+- 1차 저장장치는 "휘발성" 메모리인 RAM
+- 디스크는 Secondary Storage로 장기간의 영구적 저장공간으로 이용된다.
 
-압축할 문자열 s가 매개변수로 주어질 때, 위에 설명한 방법으로 1개 이상 단위로 문자열을 잘라 압축하여 표현한 문자열 중 가장 짧은 것의 길이를 return 하도록 solution 함수를 완성해주세요.
+디스크 내 R/W
 
-## 제한 사항
-- s의 길이는 1 이상 1000 이하입니다.
-- s는 알파벳 소문자로만 이루어져 있습니다.
+- Read : 데이터를 디스크에서 RAM(메인 메모리)으로 전달
+- WRITE : 데이터를 RAM에서 디스크로 전달
 
-## 입출력 예
-![오픈채팅방1](https://yunsikus.github.io/assets/img/post_img/문자열압축1.jpg)
+모든 데이터를 RAM에 올리지 않는 이유
 
-## 풀이
-`prev` : 이전 문자열
+- RAM 은 volatile함. (저장이 안됨)
+- 비용이 많이 든다. (128MB of RAM == 15GB of disk)
 
-`count` : 반복횟수
+Tape storage와 비교했을때의 장점
 
-`new_s` : 압축된 문자열
+- 랜덤 액세스를 통한 신속한 백업 및 복구
 
-이전 문자열을 `prev`에 저장 후 다음 문자열인 `s[i*j:i*j+i]` 과 비교합니다.
+## 디스크 구조
 
-1) 만약 다르다면, `count` + `prev`를 `new_s`에 추가합니다.(`count`가 1이면 `prev`만) `count`를 다시 1로 만들고 `prev`를 다음 문자열로 갱신합니다.
+![disk_drive1](https://yunsikus.github.io/assets/img/post_img/disk_drive1.jpg)
 
-2) 같다면, `count`에 1을 더해줍니다.
+- 헤드가 플래터의 표면에 움직이면서 데이터를 쓰거나 읽어옴
 
-마지막 비교에서 두 값이 같다면 `new_s`에 추가를 못하기 때문에, `new_s`에 추가하는 코드를 넣습니다. 그리고 최소값을 매번 갱신하여 가장 길이가 작은 `new_s`를 출력하도록 합니다.
+    → 데이터의 location이 dbms 성능에 영향을 끼침.
 
+- 트랙 : 플래터 표면 내에 동심원에 데이터를 저장하는 공간
+- 섹터 : 트랙의 일부를 피자조각처럼 쪼갠 가장 작은 단위(보통 512byte)
 
-```python
-def solutions(s):
-    answer = len(s)
-    for i in range(1,(len(s)//2)+1): ## 몇개씩 끊을것인지
-        new_s = ''
-        count = 1
-        prev = s[:i]
-        for j in range(1,len(s)//i+1):
-            if prev == s[i*j:i*j+i]: # 이전 문자열과 같으면
-                count += 1
-            else: ## 이전 문자열과 다르면
-                new_s += str(count) + prev if count >= 2 else prev ## count + prev를 new에 추가(count가 1이면 prev만)
-                count = 1   
-                prev = s[i*j:i*j+i] # prev 갱신
+`ZBR(Zone Bit Recording)`이란?
 
-        new_s += str(count) + prev if count >= 2 else prev
-        answer = min(answer,len(new_s))
+- 예전에는 트랙 당 섹터 수가 고정되어 있었음. 그래서 안쪽 트랙과 바깥쪽 트렉의 섹터 수가 동일하여 공간의 낭비가 심했음. 이를 개선하여 바깥쪽 트랙으로 갈수록 트랙 당 섹터 수를 늘리는 기법이 ZBR.
 
-    return answer
-```
+## Access time은 다음 3가지로 구성됨
+
+`탐색시간(seek time)` : read/write 헤드를 데이터가 저장되어 있는 트랙위치로 이동시키는데 소요되는 시간
+
+`회전지연시간(rotational delay time)`: read/write 헤드를 데이터가 위치하는 트랙으로 이동시킨 순간부터 원하는 섹터에 헤드가  다다를때까지 소요되는 시간.
+
+`전송시간(transfer time)` : reas/write 헤드가 찾은 데이터를 실제로 디스크로부터 사용자의 버퍼로 보내지는데 소요되는 시간
+
+그 중에서도 `seek time` 과 `rotational delay time` 을 줄이는 것이 핵심.
+
+→ 작은 지름의 디스크를 사용하여 head가 이동하는 거리를 줄일 수 있다. (seek time 개선)
+
+→ rotational delay time은 RPM을 늘리는 방법이 있다. (rotational delay time 개선)
+
+## Disk 내 Cache
+
+`Disk cache`란
+
+디스크로부터 읽은 데이터를 보관해두는 메모리 안의 영역. 이후에 같은 데이터를 읽어야할 경우가 생기면, 실제의 디스크가 아닌 디스크 캐시의 내용을 읽으면 된다.
+
+`Read ahead cache`란
+
+I/O 와 CPU 연산을 동시에 수행해 그 수행 성능을 최대로 만들어 보겠다라는 최적화 알고리즘. 상식적으로 읽고 연산 해야 하지만, "미리 쓰일것 같아 먼저 읽어 두겠다"는 것. 그로 인해 연산을 먼저 시작할 수 있으므로 성능이 더 나빠질수도 있음.
+
+`Command Queing`이란
+
+명령어 대기열로 주어진 작업을 모두 처리한 다음 명령을 받아들이면, 대기시간이 길어지다 보니, 하드디스크에 미리 명령을 쌓아 놓았다가 바로 다음 명령을 수행하는 기술로 작업 시간을 줄일 수 있다. CQ를 확장한 NCQ(Native Command Queing)와 TCQ(Tagged Command Queue)가 있다.
+
+엘리베이터가 층을 움직일 때 최소 경로를 찾듯 Disk도 여러 커맨드를 입력 받았을때 지연시간을 가장 줄일 수 있는 순서를 찾는 알고리즘이 있다.
+
+## Read & Write Processed Differently
+
+read write는 상당히 다르게 다뤄짐
+
+`Read requests` →동기(작업의 흐름이 순차적으로 진행되며 블록킹 방식이기 때문에 request가 끝날때까지 다른 작업을 동시에 진행할 수 없다)
+
+→ Read latency는 performance에 영향을 끼친다.
+
+`write requests` → 비동기
+
+## Bandwidth vs Latency
+
+`Bandwidth` : Data Transfer Rate
+
+`Latency` : seek and rotation time
+
+disk technology의 개발이 bandwidth가 2배 발전할때 latency는 1.2 ~ 1.4배정도 발전해서 gap 이 벌어짐. latency는 동기처리(read)에서 성능에 영향을 많이 주므로 문제가 됨.
