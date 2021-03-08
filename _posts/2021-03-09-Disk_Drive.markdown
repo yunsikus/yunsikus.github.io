@@ -10,14 +10,15 @@ comments: true
 ---
 
 DBMS는 `디스크기반`에서 `인메모리 기반`으로 발전함.
-DBMS의 기능을 알기 위해서는 disk drive를 알아둬야 함.
+
+DBMS의 기능을 알기 위해서는 disk drive를 알아야 함.
 
 ## 디스크란?
 
 Secondary Storage 역할을 함.
 
 - 1차 저장장치는 "휘발성" 메모리인 RAM
-- 디스크는 Secondary Storage로 장기간의 영구적 저장공간으로 이용된다.
+- 디스크는 Secondary Storage로 장기간의 영구적 저장공간으로 이용됨.
 
 디스크 내 R/W
 
@@ -66,7 +67,7 @@ Tape storage와 비교했을때의 장점
 
 `Disk cache`란
 
-디스크로부터 읽은 데이터를 보관해두는 메모리 안의 영역. 이후에 같은 데이터를 읽어야할 경우가 생기면, 실제의 디스크가 아닌 디스크 캐시의 내용을 읽으면 된다.
+디스크로부터 읽은 데이터를 보관해두는 메모리 안의 영역. 이후에 같은 데이터를 읽어야할 경우가 생기면, 실제의 디스크가 아닌 디스크 캐시의 내용을 읽으면 됨.
 
 `Read ahead cache`란
 
@@ -74,17 +75,17 @@ I/O 와 CPU 연산을 동시에 수행해 그 수행 성능을 최대로 만들�
 
 `Command Queing`이란
 
-명령어 대기열로 주어진 작업을 모두 처리한 다음 명령을 받아들이면, 대기시간이 길어지다 보니, 하드디스크에 미리 명령을 쌓아 놓았다가 바로 다음 명령을 수행하는 기술로 작업 시간을 줄일 수 있다. CQ를 확장한 NCQ(Native Command Queing)와 TCQ(Tagged Command Queue)가 있다.
+명령어 대기열로 주어진 작업을 모두 처리한 다음 명령을 받아들이면, 대기시간이 길어지다 보니, 하드디스크에 미리 명령을 쌓아 놓았다가 바로 다음 명령을 수행하는 기술로 작업 시간을 줄일 수 있다. CQ를 확장한 NCQ(Native Command Queing)와 TCQ(Tagged Command Queue)가 있음.
 
-엘리베이터가 층을 움직일 때 최소 경로를 찾듯 Disk도 여러 커맨드를 입력 받았을때 지연시간을 가장 줄일 수 있는 순서를 찾는 알고리즘이 있다.
+엘리베이터가 층을 움직일 때 최소 경로를 찾듯 Disk도 여러 커맨드를 입력 받았을때 지연시간을 가장 줄일 수 있는 순서를 찾는 알고리즘이 있음. 
 
 ## Read & Write Processed Differently
 
-read write는 상당히 다르게 다뤄짐
+read write는 상당히 다르게 다뤄짐.
 
 `Read requests` →동기(작업의 흐름이 순차적으로 진행되며 블록킹 방식이기 때문에 request가 끝날때까지 다른 작업을 동시에 진행할 수 없다)
 
-→ Read latency는 performance에 영향을 끼친다.
+→ Read latency는 performance에 영향을 끼침.
 
 `write requests` → 비동기
 
