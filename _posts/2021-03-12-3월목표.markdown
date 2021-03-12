@@ -11,5 +11,5 @@ comments: true
 ## 3월 목표
 
 - Django admin 으로 성능평가 페이지 만들기
-- Docker 공부하기(https://www.inflearn.com/course/%EB%8F%84%EC%BB%A4-%EC%9E%85%EB%AC%B8/dashboard)
-- Git/Github 강의 수강하기(https://www.inflearn.com/course/%ED%8C%80%EA%B0%9C%EB%B0%9C-%EA%B9%83-%EA%B9%83%ED%97%88%EB%B8%8C/dashboard)
+- Docker 공부하기([https://www.inflearn.com/course/%EB%8F%84%EC%BB%A4-%EC%9E%85%EB%AC%B8/dashboard](https://www.inflearn.com/course/%EB%8F%84%EC%BB%A4-%EC%9E%85%EB%AC%B8/dashboard))
+- Git/Github 강의 수강하기([https://www.inflearn.com/course/%ED%8C%80%EA%B0%9C%EB%B0%9C-%EA%B9%83-%EA%B9%83%ED%97%88%EB%B8%8C/dashboard](https://www.inflearn.com/course/%ED%8C%80%EA%B0%9C%EB%B0%9C-%EA%B9%83-%EA%B9%83%ED%97%88%EB%B8%8C/dashboard))
