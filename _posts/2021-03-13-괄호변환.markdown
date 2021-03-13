@@ -3,7 +3,7 @@ layout: post
 title: "[Python] 괄호변환"
 subtitle: "[Python] 괄호변환"
 categories: Algorithm
-tags: Stack Recursion 스택 재귀 
+tags: Stack Recursion 스택 재귀
 comments: true
 
 
@@ -114,7 +114,7 @@ def solution(p):
     if not p:
         return ''
 
-    # 만약 p가 이미 "올바른 괄호 문자열"이면 그래도 return
+    # 만약 p가 이미 "올바른 괄호 문자열"이면 return
     if check(p):
         return ''.join(p)
 
