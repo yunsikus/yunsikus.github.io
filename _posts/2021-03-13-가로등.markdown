@@ -24,16 +24,23 @@ comments: true
 - v에는 가로등의 위치정보가 들어있습니다.
 - 가로등의 위치는 0 이상 l 이하의 정수이며, 같은 위치에 2개 이상의 가로등이 있는 경우는 주어지지 않습니다.
 - 가로등의 개수는 1이상 1,000 이하의 자연수입니다.
-
 ---
 
 ## 입출력 예
 
+![가로등1](https://yunsikus.github.io/assets/img/post_img/가로등1.jpg)
+
+
+## 입출력 예 설명
+
+![가로등2](https://yunsikus.github.io/assets/img/post_img/가로등2.jpg)
+
+---
 
 ## 풀이
 
-이진탐색 문제는 크게 상한선을 찾는것과 하한선을 찾는것 2가지로 나뉩니다.
-각각의 템플릿은 다음과 같습니다.
+이진탐색의 경우 구하는 값중 가장 큰 값을 구할때(상한선), 혹은 구하는 값중 가장 작은 값을 구할때(하한선) 2가지가 있습니다.
+다음과 같은 템플릿을 활용할 수 있습니다.
 
 ```python
 # 템플릿(상한선) - 구하는 값중 가장 큰 값을 구할 때
@@ -63,70 +70,46 @@ return upper + 1
 ```
 
 가로등 문제는 구하는 값중 가장 작은 구하기 때문에 하한선 템플릿을 이용합니다.
-따라서 is_possible 만 짜면 됩니다.
+따라서 `is_possible` 만 짜면 됩니다.
 
 
-먼저 양 극단의 경우를 생각해봅니다. 만약 첫번째 등에서 왼쪽으로 빛이 뻗을때 0 에 도달하지 못하는 경우는 light를 늘려야 합니다. (is_possible = False인 경우)
+먼저 양 극단의 경우를 생각해봅니다.
 
-마찬가지로 마지막 등에서 오른쪽으로 빛이 뻗을 road_length에 도달하지 못하면 light를 늘려야합니다. (is_possible = False인 경우)
+- case1) 만약 첫번째 등에서 왼쪽으로 빛이 뻗을때 0 에 도달하지 못하는 경우는 light를 늘려야 합니다. (`is_possible = False`인 경우)
 
-다음으로, 나머지 램프들을 순서대로 돌면서 light*2를 더해줬을때 다음 램프가 있는 지점까지 도달 못하면 light를 늘려야합니다. (is_possible = False인 경우)
+- case2) 마찬가지로 마지막 등에서 오른쪽으로 빛이 뻗을 road_length에 도달하지 못하면 light를 늘려야합니다. (`is_possible = False인 경우`)
+
+- case3) 다음으로, 나머지 램프들을 순서대로 돌면서 light*2를 더해줬을때 다음 램프가 있는 지점까지 도달 못하면 light를 늘려야합니다. (`is_possible = False인 경우`)
 
 이를 차례대로 구현한 후 템플릿에 대입하면 다음과 같습니다.
 
 ```python
-from collections import deque
+def is_possible(lamps, road_length, light):
+    # case 1
+    if lamps[0] - light > 0:
+        return False
+    # case 2
+    if lamps[-1] + light < road_length:
+        return False
 
-def check(p):  # 올바른 괄호 문자열인지 확인하는 함수
-    count = 0
-    for bracket in p:
-        if bracket == "(":
-            count += 1
-        else:
-            count -= 1
-            if count < 0:
-                return False
+    # case 3
+    for i in range(len(lamps)-1):
+        if lamps[i] + light*2 < lamps[i+1]:
+            return False
     return True
 
-
-def solution(p):
-    stack = deque(list(p))
-    # 과정 1
-    if not p:
-        return ''
-
-    # 만약 p가 이미 "올바른 괄호 문자열"이면 return
-    if check(p):
-        return ''.join(p)
-
-    # 과정 2 - u,v 분리
-    count = 0
-    u = []
-    for _ in range(len(p)):
-        a = stack.popleft()
-        if a == "(":
-            count +=1
+# 하한선 템플릿
+def solution(lamps, road_length):
+    lower = 0
+    upper = road_length
+    lamps.sort()
+    print(lamps)
+    while lower <= upper:
+        mid = (lower + upper) // 2
+        print(mid)
+        if is_possible(lamps, road_length, mid):
+            upper = mid - 1
         else:
-            count -=1
-        u.append(a)
-        if count == 0:
-            break
-
-    u = ''.join(u)  
-    v = ''.join(stack)
-
-    # 과정 3
-    if check(u):
-        return u + solution(v)
-
-    # 과정 4
-    else:
-        # 과정 4-1, 4-2, 4-3
-        answer = "(" + solution(v) + ")"
-        # 과정 4-4
-        u = u[1:-1]
-        for bracket in u:
-            answer += ''.join(['(' if x==')' else ')' for x in bracket])
-
-        return answer       
+            lower = mid + 1
+    return upper + 1
 ```
