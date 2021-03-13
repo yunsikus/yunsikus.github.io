@@ -124,9 +124,9 @@ def solution(p):
     for _ in range(len(p)):
         a = stack.popleft()
         if a == "(":
-            count +=1
+            count += 1
         else:
-            count -=1
+            count -= 1
         u.append(a)
         if count == 0:
             break
