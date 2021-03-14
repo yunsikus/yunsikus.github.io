@@ -116,25 +116,3 @@ def rotate_a_matrix_by_90_degree(a):
 
   return result
 ```
-
-## 4. 자료구조 및 알고리즘별 풀기 좋은 문제들
-
-- 스택과 큐
-
-- 셋
-  - [프로그래머스_후보키](https://programmers.co.kr/learn/courses/30/lessons/42890)
-
-- 해시
-  - [프로그래머스_오픈채팅방](https://programmers.co.kr/learn/courses/30/lessons/42888)
-
-- 이분탐색
-  - [프로그래머스스쿨_가로등](https://yunsikus.github.io/algorithm/2021/03/13/%EA%B0%80%EB%A1%9C%EB%93%B1/)
-
-- 힙
-  - [프로그래머스_더맵게](https://programmers.co.kr/learn/courses/30/lessons/42626)
-
-- DP
-
-- DFS
-
-- BFS
