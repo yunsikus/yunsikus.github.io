@@ -21,7 +21,7 @@ FROM
 	table_name;
 ```
 
-하지만 해당 코드는 `rawname`, `s_code`, `price`에 대한 중복을 제거하는 것으로 중복 제거가 되지 않았습니다. 따라서 `rawname`과 `s_code`만으로만 중복제거 후에 `price`를 붙이는 방법을 찾아야했습니다.
+하지만 해당 코드는 ('rawname', 's_code')가 아닌 (`rawname`, `s_code`, `price`)에 대한 중복을 제거합니다. 따라서 `rawname`과 `s_code`만으로만 중복제거 후에 `price`를 붙이는 방법을 찾아야했습니다.
 
 ### 방법 2. distinct 후 join
 
