@@ -2,7 +2,7 @@
 layout: post
 title: "[SQL] distinct 후 필드추가"
 subtitle: "[SQL] distinct 후 필드추가"  
-categories: Data SQL
+categories: Development SQL
 tags: SQL MySQL distinct
 comments: true  
 ---  
