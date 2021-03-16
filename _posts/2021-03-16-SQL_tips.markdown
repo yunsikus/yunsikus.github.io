@@ -1,0 +1,67 @@
+---  
+layout: post
+title: "[SQL] distinct 후 필드추가"
+subtitle: "[SQL] distinct 후 필드추가"  
+categories: Data SQL
+tags: SQL MySQL distinct
+comments: true  
+---  
+업무중에 상품명(`rawname`), 상품코드(`s_code`), 가격(`price`)을 가져와야 했습니다. 이때, 상품명과 상품코드에 대해서 중복이 존재하여 중복을 제거해야 했습니다.  
+
+이때 아무 생각없이 다음과 같은 쿼리를 적용하였습니다.
+
+### 방법 1. distinct
+
+```SQL
+SELECT
+	distinct rawname,
+	s_code,
+	price
+FROM
+	table_name;
+```
+
+하지만 해당 코드는 `rawname`, `s_code`, `price`에 대한 중복을 제거하는 것으로 중복 제거가 되지 않았습니다. 따라서 `rawname`과 `s_code`만으로만 중복제거 후에 `price`를 붙이는 방법을 찾아야했습니다.
+
+### 방법 2. distinct 후 join
+
+```SQL
+SELECT
+	a.rawname,
+	a.s_code,
+	b.pid
+FROM
+	(
+	SELECT
+		distinct rawname,
+		s_code
+	FROM
+		tale_name) AS a
+INNER JOIN (
+	SELECT
+		rawname,
+		s_code,
+		pid
+	FROM
+		table name) AS b ON
+	a.rawname = b.rawname
+	AND a.s_code = b.s_code;
+```
+
+서브쿼리를 이용해서 `rawname`, `s_code`를 중복 제거한 테이블과 `rawname`, `s_code`, `price` 테이블을 inner_join 하였습니다. 하지만 table row가 20만개라 join이 안되어 다른 방법을 찾아야했습니다.
+
+### 방법 3. group by
+
+```SQL
+SELECT
+	rawname,
+	s_code,
+	MIN(price)
+FROM
+	table_name
+group by
+	rawname,
+	s_code
+```
+
+`rawname`과 `s_code`로 group by 한후 `price`의 최솟값을 가져옵니다. `price`는 `rawname`과 `s_code`에 대해서 값이 동일하기 때문에 최솟값을 해도 항상 같은 값을 가져옵니다.
